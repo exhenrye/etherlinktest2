@@ -1,0 +1,16 @@
+build/
+node_modules
+networks/*-settings.json
+outputs/
+*.DS_Store
+test-results.xml
+.tsbuilt
+yarn-error.log
+.scencache
+.solcache
+.solcachecov
+junit.xml
+.build
+.last_confs
+.env.local
+.vscode
