@@ -9,16 +9,11 @@ module.exports = {
       port: 8545,            // Standard Ethereum port 8545 for ganache-cli, 7545 for ganache with UI (default: none)
       network_id: "*",       // Any network (default: none)
     },
-    goerli: {
-      provider: function () {
-        return new HDWalletProvider(process.env["PRIVATE_KEY"], "wss://goerli.infura.io/ws/v3/" + process.env["INFURA_KEY"]);
-      },
-      network_id: '5',
-      gas: 5000000,
-      gasPrice: 3000000000,
+    sepolia: {
+       network_id: '11155111' //for verification only
     },
     dashboard: {
-      from: "0x96Fb5A3D696eA90B3CEC5eA31177D510986b423F",
+      from: "0x1410Bb115A48268F85CE308684049f6E69b1AAE0",
       port: 24012,
     }
   },
