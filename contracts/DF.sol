@@ -10,6 +10,7 @@ contract DFToken is
     PausableUpgradeable,
     AccessControlUpgradeable
 {
+    bytes32 public constant AP_ROLE = keccak256("AP_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
     bytes32 public constant BLACKLIST_ROLE = keccak256("BLACKLIST_ROLE");
@@ -57,6 +58,7 @@ contract DFToken is
         __Pausable_init();
         __AccessControl_init();
 
+        _setRoleAdmin(AP_ROLE, DEFAULT_ADMIN_ROLE);
         _setRoleAdmin(MINTER_ROLE, DEFAULT_ADMIN_ROLE);
         _setRoleAdmin(BURNER_ROLE, DEFAULT_ADMIN_ROLE);
         _setRoleAdmin(BLACKLIST_ROLE, DEFAULT_ADMIN_ROLE);
