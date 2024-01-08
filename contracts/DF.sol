@@ -113,6 +113,7 @@ contract DFToken is
         string calldata id
     ) public onlyRole(MINTER_ROLE) {
         require(!executedMintRequests[id],"mint request already executed");
+        require(hasRole(AP_ROLE,to),"mint wallet not registered");
         executedMintRequests[id] = true;
 
         _mint(to, amount);
