@@ -1,6 +1,6 @@
 ## Introduction 
 
-The xxx token(s) is a stablecoin with a smart contract architecture designed for upgradeability and robust features such as EIP-2612 permit, pausability, blacklisting, and flexible access control. The stablecoin is backed by real-life reserves and aimed at combining the stability of traditional finance with the flexibility of blockchain technology. The smart contract is based on traditional architecture for smart contract with additional functionalities as required for legal, compliance and business requiremeents.
+The xxx token(s) is a stablecoin with a smart contract architecture designed for upgradeability and robust features such as EIP-2612 permit, pausability, blacklisting, and flexible access control. The stablecoin is fully collateralised by a combination of cash and high quality government bonds, combining the stability of traditional finance with the flexibility of blockchain technology. The smart contract is based on traditional architecture for smart contract with additional functionalities as required for legal, compliance and business requiremeents.
 
 
 ## Smart Contract Capabilities
