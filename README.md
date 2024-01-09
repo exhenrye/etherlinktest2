@@ -82,7 +82,8 @@ the `pause()` and `unpause()` methods can only be called by the holder of the DE
 
 # Deployment and migrations
 
-truffle migrate --network dashboard 
+truffle migrate --network dashboard
+truffle run verify DFToken --network [TARGET_NETWORK]
 
 ## Install dependencies
 
