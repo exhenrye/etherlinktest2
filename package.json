@@ -16,8 +16,8 @@
   "license": "ISC",
   "bugs": {},
   "dependencies": {
-    "@openzeppelin/contracts": "^5.0.0",
-    "@openzeppelin/contracts-upgradeable": "^5.0.0",
+    "@openzeppelin/contracts": "5.0.1",
+    "@openzeppelin/contracts-upgradeable": "5.0.1",
     "@openzeppelin/truffle-upgrades": "^1.21.0",
     "@truffle/hdwallet-provider": "^2.0.0",
     "ganache-cli": "6.12.2",

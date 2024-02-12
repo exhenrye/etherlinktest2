@@ -3,14 +3,14 @@ pragma solidity 0.8.21;
 
 import "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20PermitUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/access/extensions/AccessControlDefaultAdminRulesUpgradeable.sol";
 
 contract DFToken is
     ERC20PermitUpgradeable,
     PausableUpgradeable,
-    AccessControlUpgradeable
+    AccessControlDefaultAdminRulesUpgradeable
 {
-    bytes32 public constant AP_ROLE = keccak256("AP_ROLE");
+    bytes32 public constant WHITELIST_ROLE = keccak256("WHITELIST_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
     bytes32 public constant BLACKLIST_ROLE = keccak256("BLACKLIST_ROLE");
@@ -43,11 +43,11 @@ contract DFToken is
     /// @param amount the amount of tokens burned
     /// @param id request id used for bookkeeping
     event Burn(address from, uint256 amount, string id);
-    /// @notice Logs when tokens are transferred out
+    /// @notice Logs when tokens are transferred, including a request id
     /// @param to the address receiving tokens
     /// @param amount the amount of tokens transferred
     /// @param id request id used for bookkeeping
-    event TransferOut(address to, uint256 amount, string id);
+    event TransferWithId(address to, uint256 amount, string id);
 
     function initialize(
         string memory name,
@@ -56,9 +56,9 @@ contract DFToken is
         __ERC20_init(name, symbol);
         __ERC20Permit_init(name);
         __Pausable_init();
-        __AccessControl_init();
+        __AccessControlDefaultAdminRules_init(604800,msg.sender); // 604800 seconds = 7 days
 
-        _setRoleAdmin(AP_ROLE, DEFAULT_ADMIN_ROLE);
+        _setRoleAdmin(WHITELIST_ROLE, DEFAULT_ADMIN_ROLE);
         _setRoleAdmin(MINTER_ROLE, DEFAULT_ADMIN_ROLE);
         _setRoleAdmin(BURNER_ROLE, DEFAULT_ADMIN_ROLE);
         _setRoleAdmin(BLACKLIST_ROLE, DEFAULT_ADMIN_ROLE);
@@ -85,7 +85,7 @@ contract DFToken is
     /// @param addr address
     function addToBlacklist(address addr) public onlyRole(BLACKLIST_ROLE) 
     {
-        require(!isBlacklisted[msg.sender], "address already blacklisted");
+        require(!isBlacklisted[addr], "address already blacklisted");
         
         isBlacklisted[addr] = true;
         emit AddedToBlacklist(addr);
@@ -96,7 +96,7 @@ contract DFToken is
     /// @param addr address
     function removeFromBlacklist(address addr) public onlyRole(BLACKLIST_ROLE)
     {
-        require(isBlacklisted[msg.sender], "address not blacklisted");
+        require(isBlacklisted[addr], "address not blacklisted");
         
         isBlacklisted[addr] = false;
         emit RemovedFromBlacklist(addr);
@@ -112,8 +112,8 @@ contract DFToken is
         uint256 amount,
         string calldata id
     ) public onlyRole(MINTER_ROLE) {
-        require(!executedMintRequests[id],"mint request already executed");
-        require(hasRole(AP_ROLE,to),"mint wallet not registered");
+        require(!executedMintRequests[id], "mint request already executed");
+        require(hasRole(WHITELIST_ROLE, to),"wallet not whitelisted");
         executedMintRequests[id] = true;
 
         _mint(to, amount);
@@ -136,20 +136,21 @@ contract DFToken is
     }
 
     /// @notice Transfer tokens 
-    /// @dev only granted address address can call this function. Emits TransferOut event
+    /// @dev only granted address address can call this function. Emits TransferWithId event
     /// @param to the recipient of transferred tokens 
     /// @param amount the amount of transferred tokens
     /// @param id request id; used for bookkeeping
-    function transferOut(
+    function transferWithId(
         address to,
         uint256 amount,
         string calldata id
-    ) public onlyRole(MINTER_ROLE) {
+    ) public {
         require(!executedTransferRequests[id],"transfer request already executed");
+        require(hasRole(WHITELIST_ROLE, to),"wallet not whitelisted");
         executedTransferRequests[id] = true;
 
         transfer(to, amount);
-        emit TransferOut(to, amount, id);
+        emit TransferWithId(to, amount, id);
     }
 
     /// @notice implements pause and blacklist functionality

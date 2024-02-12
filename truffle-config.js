@@ -10,7 +10,7 @@ module.exports = {
       network_id: "*",       // Any network (default: none)
     },
     sepolia: {
-       network_id: '11155111' //for verification only
+      network_id: '11155111' //for verification only
     },
     dashboard: {
       from: "0x1410Bb115A48268F85CE308684049f6E69b1AAE0",
@@ -30,13 +30,14 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.8.21",    // Fetch exact version from solc-bin (default: truffle's version)
-      settings: {          // See the solidity docs for advice about optimization and evmVersion
+      version: "0.8.21",
+      settings: {         
         optimizer: {
           enabled: false,
           runs: 200
         },
-      }
+      },
+      evmVersion: "paris"
     }
   },
 };
