@@ -56,13 +56,14 @@ contract DFToken is
         __ERC20_init(name, symbol);
         __ERC20Permit_init(name);
         __Pausable_init();
-        __AccessControlDefaultAdminRules_init(604800,msg.sender); // 604800 seconds = 7 days
 
         _setRoleAdmin(WHITELIST_ROLE, DEFAULT_ADMIN_ROLE);
         _setRoleAdmin(MINTER_ROLE, DEFAULT_ADMIN_ROLE);
         _setRoleAdmin(BURNER_ROLE, DEFAULT_ADMIN_ROLE);
         _setRoleAdmin(BLACKLIST_ROLE, DEFAULT_ADMIN_ROLE);
-        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+
+        //_grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        __AccessControlDefaultAdminRules_init(604800,msg.sender); // 604800 seconds = 7 days
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(BURNER_ROLE, msg.sender);
         _grantRole(BLACKLIST_ROLE, msg.sender);
