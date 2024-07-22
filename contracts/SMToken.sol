@@ -5,7 +5,7 @@ import "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20PermitUp
 import "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/extensions/AccessControlDefaultAdminRulesUpgradeable.sol";
 
-contract DFToken is
+contract SMToken is
     ERC20PermitUpgradeable,
     PausableUpgradeable,
     AccessControlDefaultAdminRulesUpgradeable

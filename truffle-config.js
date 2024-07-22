@@ -17,13 +17,18 @@ module.exports = {
       port: 80,
       network_id: '97'
     },
+    bsc: { //for verification only
+      host: "bsc-mainnet.public.blastapi.io",
+      port: 80,
+      network_id: '56'
+    },
     dashboard: {
-      from: "0x1410Bb115A48268F85CE308684049f6E69b1AAE0",
+      from: "0x4a7148c0C0a18808075dfF911b19E9AaD5e6fE67",
       port: 24012,
     }
   },
 
-  //npx truffle run verify DFToken@0x3c15732a991331279218982b3ea1b08af2be4981 --network bsc_test
+  //npx truffle run verify SMToken@0x7db970fdaf01c9b80c391158c5007c46aeab98ad --network bsc
   plugins: ['truffle-plugin-verify'],
   api_keys: {
     etherscan: '61ZSB6UPFZPQHFS58MUVITVKEYFDQFX3JM' //for BSC

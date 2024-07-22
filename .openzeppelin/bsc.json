@@ -1,46 +1,46 @@
 {
   "manifestVersion": "3.2",
   "admin": {
-    "address": "0x8ce898DA72bb9c03885AE2c5fB2537eFeF481B13",
-    "txHash": "0x647fb01e926f3c02e4c7d882669a76d74cb15a557347384fe71e7757cf667c56"
+    "address": "0xC5984D59Fab2d6c92b08aba212Fc2C0a8c69aD06",
+    "txHash": "0xf19058e362d9191af14aac17db787b7c05ec20ce637d4ebe85a22ad5ace3c330"
   },
   "proxies": [
     {
-      "address": "0xA296C7F04Fbf3F6f455818d2A7cf39B7B8c56B1a",
-      "txHash": "0x2ae14b6a4f21fe01543ea7de86652b26b54020f3c2f93e77ee8f8e7ee9b02578",
+      "address": "0xCa2eF3455429A32E0D8c4B07E684a8B6a51228DD",
+      "txHash": "0xb19ee30b492f000a7cf55cec733fee1360cac002fad35ab57b3a124dfbf6fa61",
       "kind": "transparent"
     }
   ],
   "impls": {
     "0e56df1c0d47c9af245b32753bf82d6b632bf727338b24d41197ef7869485e50": {
-      "address": "0x3c15732a991331279218982b3eA1b08aF2Be4981",
-      "txHash": "0x9f8584df4c0dab376a90f4328d3b5716e1d4bbddc8c311db35f6f17f7bf9552a",
+      "address": "0x7db970fDAF01c9b80C391158C5007c46aeab98aD",
+      "txHash": "0x69e98fed031cd0ff01ff98d6ab0fad37b33fdf08210b105676a2fbb9aa671962",
       "layout": {
         "solcVersion": "0.8.21",
         "storage": [
           {
-            "contract": "DFToken",
+            "contract": "SMToken",
             "label": "isBlacklisted",
             "type": "t_mapping(t_address,t_bool)",
-            "src": "../project:/contracts/DF.sol:19"
+            "src": "../project:/contracts/SMToken.sol:19"
           },
           {
-            "contract": "DFToken",
+            "contract": "SMToken",
             "label": "executedMintRequests",
             "type": "t_mapping(t_string_memory_ptr,t_bool)",
-            "src": "../project:/contracts/DF.sol:22"
+            "src": "../project:/contracts/SMToken.sol:22"
           },
           {
-            "contract": "DFToken",
+            "contract": "SMToken",
             "label": "executedTransferRequests",
             "type": "t_mapping(t_string_memory_ptr,t_bool)",
-            "src": "../project:/contracts/DF.sol:25"
+            "src": "../project:/contracts/SMToken.sol:25"
           },
           {
-            "contract": "DFToken",
+            "contract": "SMToken",
             "label": "executedBurnRequests",
             "type": "t_mapping(t_string_memory_ptr,t_bool)",
-            "src": "../project:/contracts/DF.sol:28"
+            "src": "../project:/contracts/SMToken.sol:28"
           }
         ],
         "types": {
