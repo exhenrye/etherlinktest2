@@ -28,7 +28,8 @@ module.exports = {
       network_id: '56'
     },
     dashboard: {
-      from: "0x4a7148c0C0a18808075dfF911b19E9AaD5e6fE67",
+      //from: "0x4a7148c0C0a18808075dfF911b19E9AaD5e6fE67", //OPS-PROD
+      from: "0xd1eD0be9f74e78C453849EDe52a86Ec9d6b1Bdf1", //OPS-TEST
       port: 24012,
     }
   },
