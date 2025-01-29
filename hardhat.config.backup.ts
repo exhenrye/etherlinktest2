@@ -1,4 +1,3 @@
-import "@nomicfoundation/hardhat-verify";
 import "@nomicfoundation/hardhat-toolbox";
 import type { HardhatUserConfig } from "hardhat/config";
 import "dotenv/config";
@@ -27,22 +26,6 @@ const config: HardhatUserConfig = {
       chainId: 128123,
     },
   },
-  etherscan: {
-    apiKey: {
-      etherlinkTestnet: "DUMMY",  // No API key needed
-    },
-    customChains: [
-      {
-        network: "etherlinkTestnet",
-        chainId: 128123,
-        urls: {
-          apiURL: "https://testnet.explorer.etherlink.com/api",
-          browserURL: "https://testnet.explorer.etherlink.com",
-        },
-      },
-    ],
-  },
-  
 };
 
 export default config;
